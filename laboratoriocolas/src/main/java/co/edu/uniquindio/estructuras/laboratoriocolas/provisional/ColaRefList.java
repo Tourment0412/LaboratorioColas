@@ -3,7 +3,7 @@ package co.edu.uniquindio.estructuras.laboratoriocolas.provisional;
 import java.util.NoSuchElementException;
 
 
-public class Cola <E> {
+public class ColaRefList <E> {
 	
 	
 	private SimpleNode<E> head;
@@ -11,7 +11,7 @@ public class Cola <E> {
 	private int size;
 	
 	
-	public Cola() {
+	public ColaRefList() {
 		this.head=null;
 		this.tail=null;
 		this.size=0;
@@ -75,8 +75,8 @@ public class Cola <E> {
 		return size;
 	}
 	
-	public Cola<E> copyOf(){
-		Cola<E> cola= new Cola<>();
+	public ColaRefList<E> copyOf(){
+		ColaRefList<E> cola= new ColaRefList<>();
 		if(this.head==null) {
 			return cola;
 		}
@@ -108,7 +108,7 @@ public class Cola <E> {
 	
 	 void linkLast(E e) {
 	        final SimpleNode<E> l = tail;
-	        final SimpleNode<E> newNode = new SimpleNode<E>(l, e, l);
+	        final SimpleNode<E> newNode = new SimpleNode<E>(l, e, null);
 	        tail = newNode;
 	        if (l == null)
 	            head = newNode;
@@ -134,7 +134,7 @@ public class Cola <E> {
 	        final E element = f.getValue();
 	        final SimpleNode<E> next = f.getNext();
 	        f.setValue(null);
-	        f.setNext(null); // help GC
+	        f.setNext(null); 
 	        head = next;
 	        if (next == null)
 	            tail = null;
